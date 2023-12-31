@@ -1,0 +1,107 @@
+%Last edited December 21, 2022
+
+% ===========================================================
+% Package imports
+% ===========================================================
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{fancyhdr}
+\usepackage{titling}
+\usepackage{lastpage}
+\usepackage{siunitx}
+\usepackage{physics}
+\usepackage{float}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{tikz}
+
+\usepackage[  
+colorlinks=true,
+linkcolor=blue
+]{hyperref}
+
+% ===========================================================
+% Doucment formatting
+% ===========================================================
+% Page layout and spacing
+\usepackage[letterpaper, margin = 1in]{geometry}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt plus2pt minus2pt}
+
+% Default author, title, and date
+\title{Default Title}
+\author{John Wood}
+\date{\today}
+
+% Set page numbering to  'Page x of y' format
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0mm}
+\fancyfoot[C]{Page \thepage \hspace{1pt} of \pageref{LastPage}}
+
+% Title page style (same footer, but head rule width is zero)
+\fancypagestyle{titlepagestyle}{
+	\fancyhf{}
+	\renewcommand{\headrulewidth}{0mm}
+	\fancyfoot[C]{Page \thepage \hspace{1pt} of \pageref{LastPage}}
+}
+
+% Three place Fancy header and footer
+\newcommand{\header}[3]{ %add optional head-rule width paramter
+	\renewcommand{\headrulewidth}{0.5pt}
+	\fancyhead[L]{#1}
+	\fancyhead[C]{#2}
+	\fancyhead[R]{#3}
+}
+
+% Bolded title
+\newcommand{\boldtitle}{
+	\thispagestyle{titlepagestyle}
+	\begin{center}
+		\textbf{\Large{\thetitle}}
+	\end{center}
+}
+
+% ===========================================================
+% New commands
+% ===========================================================
+% Sets
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\epsilon}{\varepsilon}
+
+% Logic one
+\newcommand{\limplies}{\rightarrow}
+\newcommand{\limpliedby}{\leftarrow}
+\newcommand{\liff}{\leftrightarrow}
+
+% Reference
+\newcommand{\reff}[1]{\hyperref[#1]{(\ref*{#1})}}
+\newcommand{\use}[1]{\text{by } \reff{#1}}
+
+% Proof
+\newcommand{\st}{\text{ s.t. }}
+\renewcommand{\qed}{\begin{flushright}$\blacksquare$\end{flushright}}
+
+% Operators
+\DeclareMathOperator{\img}{img}
+\DeclareMathOperator{\cod}{cod}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\idx}{idx}
+
+% Other
+\newcommand{\ds}{\displaystyle}
+
+% ===========================================================
+% Theorems
+% ===========================================================
+\newtheorem{definition}[equation]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem{theorem}{Theorem}
