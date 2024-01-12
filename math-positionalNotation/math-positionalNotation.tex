@@ -26,6 +26,40 @@
 	\section{The Decimal System}
 	One approach to discuss positional notation is to outright define it. In this section, I add some motivaion to the definition. We will analyze how we write numbers to get some insight in the sytem we use.
 	
+	Consider writing down numbers successively. Only worrying about the natural numbers $\N$, we start with zero, $\overline{0}$ and write each number on a sheet of paper. The first few numbers are written with single symbols:
 	
+	\begin{equation}\label{eq1}
+		\pqty{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+	\end{equation}
+	
+	
+	Once we have reached nine, how do we write the next number? We combine a ``1'' with a ``0.'' Next, we keep the first ``1,'' and iterate the second symbol through the sybols in \reff{eq1}:
+	
+	\begin{equation}\label{eq2}
+		\bm{1}0\to \bm{1}1\to\bm{1}2\to\dots\to\bm{1}9
+	\end{equation}
+	
+	After we exaust all posiibilities for the second symbol, we increment the first:
+	
+		\begin{equation}\label{eq3}
+		\bm{2}0\to \bm{2}1\to\bm{2}2\to\dots\to\bm{2}9
+		\end{equation}
 	 
+	And so on until we reach ``99,'' at which point we add a third symbol and return the others to ``0'':
+	
+		\begin{equation}\label{eq4}
+		\bm{9}9\to\bm{10}0\to\bm{10}1\to\bm{10}2\to\dots
+		\end{equation}
+	 
+	Notice now that as we continue, we keep the first two symbols in place until we exaust all possibilities for the last symbol.
+	
+	In general, we start with a single symbol that incrments through the possibilities in \reff{eq1}. Then, add a symbol in front and keep it in place as the second symbol increments. Once a symbol has gone through its possibilities, work on the one before it. If there isn't one before, it, add one.
+	
+	Notice that there are $\overline{10}$ symbols in \reff{eq1}. So, once we've exausted a single symbol, we have gone through $\overline{10}$ elements of the natural numbers. That is, we have written symbols for the numbers from $\overline{0}$ to $\overline{9}$. Adding a second symbol in our writing gets us to the number $\overline{10}$. For each possibility of the new symbol, we cycle through each of the $\overline{10}$ possibilities from \reff{eq1}, so that ``99'' represents the $\pqty{\overline{10}+\overline{9}\cdot\overline{10}}^\text{th}$ element $\N$ (the number $\overline{99}$ since $\N$ starts with $\overline{0}$).
+	
+	When we get to three symbols, each increment of the first has $\overline{100}$ possibilities for the second and third symbols (``00'' to ``99''). This follows from the previous paragraph, with the addition of a leading ``0'' to the first $\overline{10}$ number representations. Thus, ``x00,'' where is one of our symbols, represnts the number $\overline{x}\cdot\overline{100}$.
+	
+	%TODO address leading zeros
+	
+	We can generalize from here. The addition of a new symbol gives the chance to cycle through the possibilites of the other symbols with a leading ``0.'' For example, ``3000'' would 
 \end{document}
