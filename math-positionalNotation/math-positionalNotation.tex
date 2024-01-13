@@ -8,6 +8,7 @@
 	\boldtitle
 	
 	% TODO define symbol
+	% TODO add motivation
 	
 	\section{Numbers and Notation}
 	We begin by trying to justify a distiction between numbers and their notation. If you are asked to write a random number, you might write ``10.'' That peice of writing is not, itself, the number you are thinking of. Rather, the symbols you write \textit{refer} to a certain number. By ``symobls,'' I mean certain shapes which are given meaning. Letters, and other glyphs are all symbols. To see this reference-base relationship between symbols and numbers, consider that the same number could be written differently. Using Roman numerals, the symobl ``X'' refers to the same number as ``10.'' Alternatively, notice that different languages use unique speech to speak of the same number. We don't say that an enligh-speaker's ``ten'' and a french-speaker's ``dix'' are different numbers. Instead, we know that English and French have different methods of referring to the same number.
@@ -26,7 +27,7 @@
 	\section{The Decimal System}
 	One approach to discuss positional notation is to outright define it. In this section, I add some motivaion to the definition. We will analyze how we write numbers to get some insight in the sytem we use.
 	
-	Consider writing down numbers successively. Only worrying about the natural numbers $\N$, we start with zero, $\overline{0}$ and write each number on a sheet of paper. The first few numbers are written with single symbols:
+	Consider writing down numbers successively. Only worrying about the natural numbers $\N$, we start with zero ($\overline{0}$) and write each number on a sheet of paper. The first few numbers are written with single symbols:
 	
 	\begin{equation}\label{eq1}
 		\pqty{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
@@ -61,5 +62,35 @@
 	
 	%TODO address leading zeros
 	
-	We can generalize from here. The addition of a new symbol gives the chance to cycle through the possibilites of the other symbols with a leading ``0.'' For example, ``3000'' would 
+	We can generalize from here. The addition of a new symbol gives the chance to cycle through the possibilites of the other symbols with a leading ``0.'' For example, to get to ``4321'', we've gone through each possibility of the first symbol from 1 to 4, each possibility of the second symbol from 1 to 3, and so on. 
+	
+	Since we are working with ten symbols, each additional symbol in a representation multiplies the possible representations by ten.
+	
+	This exploration has shown us that in our common notation system, we use the order of symbols to represent greater and greater numbers. Us having used ten symbols is an arbitrary descision, though. This is addressed by the definitions in the next section.
+	
+	\section{Positional Notation}
+	In this section, we give a more rigorous definition of positional notation. We start by defining numeral systems in general. To do that, we must define glyphs. This is a rather philosohpical task. In this context, we take a glyph to mean something like a written ``2'' or that same shape on a screen. We are focused mainly on writting, but even a spoken word can be a glyph. This allows combinations of words to represent numbers in the same was as written glyphs.
+	
+	\begin{definition}\label{def5}
+		A glyph is an object.
+	\end{definition}
+	\begin{remark}
+		This is an extremely broad defintion, but I find it necessary when considering, in the broadest of terms, what can be a glyph. In most cases, glyphs are written (or displayed, for computer screens and in general) or spoken objects. When displayed, a glyph is a goemtric shape that has certain distinguishing characteristics (e.g. the circular nature of ``0''). When spoke, a glyph is a series of pressure waves in a medium that, when they affect an ear drum, are understood, given some language knowledge of the hearer.
+		
+		These cover most cases, but any object could be a glyph. There is nothing stopping us from calling, say, a dog a glyph. The dog, in a certain numeral system, might repsresent the number $\overline{22}$. Even a dream could be chosen to represent a certain number.
+	\end{remark}
+	
+	\begin{definition}\label{def 6}
+		A numeral system for a set of numbers $X$ is a tuple
+		$$\pqty{G, V}$$
+		where $G$ is a set of glyphs and $V$ is a function from (tuples of any length (except empty tuples) containing only elements of $G$) to $X$.
+	\end{definition}
+	
+	With the above, we can now define positional notation.
+	
+	\begin{definition}\label{def7}
+		Let $b\in\N^*$, and $G_b$ be a $b$-ary tuple of glyphs. Then base $b$ positional notation is a numeral system with $X=\mathbb{R}$, $G=G_b$ and $V$ defined by
+	\end{definition}
+	
+	
 \end{document}
