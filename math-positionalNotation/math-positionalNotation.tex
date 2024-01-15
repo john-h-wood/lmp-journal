@@ -69,6 +69,7 @@
 	This exploration has shown us that in our common notation system, we use the order of symbols to represent greater and greater numbers. Us having used ten symbols is an arbitrary descision, though. This is addressed by the definitions in the next section.
 	
 	\section{Positional Notation}
+	\subsection{Definitions}
 	In this section, we give a more rigorous definition of positional notation. We start by defining numeral systems in general. To do that, we must define glyphs. This is a rather philosohpical task. In this context, we take a glyph to mean something like a written ``2'' or that same shape on a screen. We are focused mainly on writting, but even a spoken word can be a glyph. This allows combinations of words to represent numbers in the same was as written glyphs.
 	
 	\begin{definition}\label{def5}
@@ -83,14 +84,104 @@
 	\begin{definition}\label{def 6}
 		A numeral system for a set of numbers $X$ is a tuple
 		$$\pqty{G, V}$$
-		where $G$ is a set of glyphs and $V$ is a function from (tuples of any length (except empty tuples) containing only elements of $G$) to $X$.
+		where $G$ is a set of glyphs and $V$ is a function from non empty tuples of elements of $G$ to $X$.
 	\end{definition}
 	
-	With the above, we can now define positional notation.
+	With the above, we can now define positional notation. This will be a long defintion, so we first dicuss. The idea behind positional notation is to have numbers represted with ordered series made of a possible $b\in\N^*$ glyphs. Each positional is to be `worth' exponential values of the base. For example, $xyzw$ in base $b$ would represent the number
+	\begin{equation}\label{eq7}
+		w\cdot b^{\overline{0}} + z\cdot b^{\overline{1}} + y\cdot b^{\overline{2}} + x\cdot b^{\overline{3}}
+	\end{equation}
+	For this equation to be sensical\footnote{Sensical without defining addition and multiplication between $b$ and symbols. The most important part of the positional system, at least that which is commonly taught, is how the position of glyphs contributes differents exponents of the base to the final value. However, how each glyph references a number is a vital part of the system, making it a numeral system.}, we would need to know the value of the symbols in $xyzw$. The positional system assigns numbers to each of the $b$ glyphs using their position in a tuple. To accomplish this, we will define an index function,  which gives us the position of an element in a tuple. This
 	
-	\begin{definition}\label{def7}
-		Let $b\in\N^*$, and $G_b$ be a $b$-ary tuple of glyphs. Then base $b$ positional notation is a numeral system with $X=\mathbb{R}$, $G=G_b$ and $V$ defined by
+	Let $T$ be an $n$-ary tuple with $n\in\N^*$ without repeating elements. Then for any $x\in T$, the index function if a function
+	
+	\begin{equation}\label{eq8}
+		\idx: \Bqty{T}\cross x\to \Bqty{\overline{0}, ..., n-\overline{1}}
+	\end{equation}
+	
+	defined by
+	
+	\begin{align}\label{eq9}
+		\idx (T, x) &= \text{the position of $x$ in $T$ with} \\
+					&\qquad\text{the first element having position $\overline{0}$}\nonumber \\
+					&\qquad\text{and the last element having position $\overline{n-1}$}\nonumber
+	\end{align}
+	
+	Notice that if $T$ had repeating elements, indexing would be less intuitive. For example, the position of $1$ in $(2, 9, 1, 0, 7, 1)$ could either be $\overline{2}$ or $\overline{5}$. Avoiding this allows us to identify a \textit{unique} index. For positional notation this in turn allows for a single number to represented by a string of glyphs.
+	
+	Now, say our base $b$ positional notation has a tuple $T$ of $b$ glyphs. \ref{eq7} would more properly be written
+	
+	\begin{equation}\label{eq10}
+		\idx(T, w)\cdot b^{\overline{0}} + \idx(T, z)\cdot b^{\overline{1}} + \idx(T, y)\cdot b^{\overline{2}} + \idx(T, x)\cdot b^{\overline{3}}
+	\end{equation}
+	
+	The last step is to cover non-whole numbers. You might see that a system allowing only multiples of whole powers of $b$ would only be able to give us whole numbers. How, for example, would we repsent $\overline{0.5}$? The closest we could get right now is $\overline{0}\cdot b^{\overline{0}} = 0$. The solution taken by the positional system is to allow for negative powers of $b$. This allows us to consider fraction values. Glyphs associated with negative powers are delineated with a decimal point: ``.''  Gylphs after the point are associated with negative powers. For example, the representation $xy.tu$ would represent the number
+	
+	\begin{equation}\label{eq11}
+		\idx(T, x)\cdot b^{\overline{1}} + \idx(T, y)\cdot b^{\overline{0}} + \idx(T, t)\cdot b^{\overline{-1}} + \idx(T, u)\cdot b^{\overline{-2}}
+	\end{equation}
+	
+	Notice that from left to right, the power of $b$ decreases by $\overline{1}$ for each glyph. The glyph for the zeroth power is right before the decimal point. For simplicity, we can say that a representation witout a decimal point represents the same number as if a decimal point were at the end.
+	
+	\begin{definition}
+		Let $b\in \Bqty{2, 3, \dots}$. Let $G$ be a set of $b$ glyphs and let $T$ be a tuple of those same glyphs, with some particular order. Then, ``base $b$ positional notation'' is  a numeral system for the set of numbers $\Bqty{x\in\R : x\geq 0}$ with the set of glyphs $G\cup \Bqty{.}$, with $V$ defined by
+		
+		\begin{equation}\label{eq12}
+			\begin{split}
+				V(p_{n}, p_{n-\overline{1}}, \dots, p_{\overline{0}})&=V(p_{n}, p_{n-\overline{1}}, \dots, p_{\overline{0}}, .)\\
+				V(p_{n}, p_{n-\overline{1}}, \dots, p_{\overline{0}}, ., p_{\overline{-1}}, \dots, p_{d}) &= \sum_{i=d}^{n}\idx(T, p_i)b^i
+			\end{split}
+		\end{equation}
 	\end{definition}
+	
+	We make some remarks on this definition:
+	
+	\begin{remark}
+		The definition does not specify what glyphs should be used. We commonly use the arabic numerals for base ten positional notation: $(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)$, but any glyphs work. Base $b$ positional notation is usually considered seperately from the exact glyphs used. This is reflected in us defining a term without reference to $T$: ``base $b$ positional notation.''
+	\end{remark}
+		
+	\begin{remark}
+		The restriction that $b\geq 2$ is necessary since $\overline{1}$ to any power is equal to $\overline{1}$. If we had $b=\overline{1}$, the definition of $V$ be such that non-whole numbers could not be represented. This is supposed to be accomplished by negative powers of $b$ yielding fractional values to use in \ref{eq12}. Since $\overline{1}$ does not satisfy this, the equation contains purely whole numbers.
+	\end{remark}
+	
+	Base ten positional notation is commonly called the ``decimal system.'' There are, in fact, many common bases used with positional notation. We list three with their most commonly used gylphs.
+	
+	\begin{equation}
+		\begin{array}{c | c | c}
+			\text{Base} & \text{Name} & \text{Common glyphs}\\
+			\hline
+			\overline{2} & Binary & \pqty{0, 1}\\
+			\hline
+			\overline{10} & Decimal & \pqty{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}\\
+			\hline
+			\overline{16} & Hexadecimal & \pqty{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F}
+			
+		\end{array}
+	\end{equation}
+	
+	For more pratical use, we define two notions:
+	
+	\begin{definition}
+		Positional notation the set of positional notations in all bases.
+	\end{definition}
+	\begin{remark}
+		This clarifies use of the term positional notation. We might say ``using/with/because of positional notation'' to be base-agnostic.
+	\end{remark}
+	
+	\begin{definition}
+		In the context of referencing a number, a string of glyphs $s$ ending with a suffix string of glyph representing the number $b$ means that $s$ is to be understood as a represention in base $b$ positoinal notation. The notation used to find the number represented by the suffix is to be determined in context.
+	\end{definition}
+	\begin{example}
+		``$123_{\overline{10}}$'' is a representation in base ten positional notation. I use the overline system to show how to intepret the suffix glyphs.
+	\end{example}
+	\begin{example}
+		$101_2\neq 101_{10}$. Without explicit notation information, you are meant to understand that the suffixes are in base-ten positional notation. 
+	\end{example}
+	
+		
+	From the previous examples, you may see that assumptions are required when the numeral system in use is not stated. Very commonly, base ten positional notation is used. In my writing, assume it is unless otherwise specified. From here, we drop the overline notation. When glyphs are used, treat them within the decimal system unless otherwise states.
+	
+	\subsection{Theorems}
 	
 	
 \end{document}
