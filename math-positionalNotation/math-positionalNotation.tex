@@ -123,11 +123,14 @@
 	
 	Notice that from left to right, the power of $b$ decreases by $\overline{1}$ for each glyph. The glyph for the zeroth power is right before the decimal point. For simplicity, we can say that a representation witout a decimal point represents the same number as if a decimal point were at the end.
 	
+	To deal with negative numbers, the usual approach is to add a ``-'' glyph when refrring to the negative (i.e. to the additive inverse) of the number represented by the rest of the glyphs. This is formalized by a conition in the definition of $V$. See this in the definitiont hat follows.
+	
 	\begin{definition}
-		Let $b\in \Bqty{2, 3, \dots}$. Let $G$ be a set of $b$ glyphs and let $T$ be a tuple of those same glyphs, with some particular order. Then, ``base $b$ positional notation'' is  a numeral system for the set of numbers $\Bqty{x\in\R : x\geq 0}$ with the set of glyphs $G\cup \Bqty{.}$, with $V$ defined by
+		Let $b\in \Bqty{2, 3, \dots}$. Let $G$ be a set of $b$ glyphs and let $T$ be a tuple of those same glyphs, with some particular order. Then, ``base $b$ positional notation'' is  a numeral system for the set of numbers $\R$ with the set of glyphs $G\cup \Bqty{., -}$, with $V$ defined by
 		
 		\begin{equation}\label{eq12}
 			\begin{split}
+				V(-, p_{n}, p_{n-\overline{1}}, \dots, p_{\overline{0}})&=-V(p_{n}, p_{n-\overline{1}}, \dots, p_{\overline{0}})\\
 				V(p_{n}, p_{n-\overline{1}}, \dots, p_{\overline{0}})&=V(p_{n}, p_{n-\overline{1}}, \dots, p_{\overline{0}}, .)\\
 				V(p_{n}, p_{n-\overline{1}}, \dots, p_{\overline{0}}, ., p_{\overline{-1}}, \dots, p_{d}) &= \sum_{i=d}^{n}\idx(T, p_i)b^i
 			\end{split}
@@ -182,6 +185,9 @@
 	From the previous examples, you may see that assumptions are required when the numeral system in use is not stated. Very commonly, base ten positional notation is used. In my writing, assume it is unless otherwise specified. From here, we drop the overline notation. When glyphs are used, treat them within the decimal system unless otherwise states.
 	
 	\subsection{Theorems}
+	\begin{theorem}\label{thm1}
+		For each base, every number has a unique representation in positional notation
+	\end{theorem}
 	
 	
 \end{document}
